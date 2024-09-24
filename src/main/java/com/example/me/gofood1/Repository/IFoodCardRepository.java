@@ -8,7 +8,7 @@ import java.util.List;
 
 //public interface IFoodCardRepository extends JpaRepository<FoodCard, Integer> {
 
-    public interface IFoodCardRepository {
+public interface IFoodCardRepository {
     static List<FoodCard> foodCardListR = new ArrayList<>();
     public FoodCard addFoodCardR(FoodCard foodCard);
     public FoodCard getFoodCardR(int id);
