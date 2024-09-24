@@ -12,8 +12,8 @@ public class ICartServiceImpl implements ICartService {
     static List<Cart> Carts = new ArrayList<>();
     static {
 
-        Carts.add(new Cart("Chicken Biryani", 2, 200.90));
-        Carts.add(new Cart("Veg Biryani", 1, 90.80));
+        Carts.add(new Cart("Chicken Biryani", 2, 200.90,"HALF"));
+        Carts.add(new Cart("Veg Biryani", 1, 90.80,"FULL"));
     }
 
 
