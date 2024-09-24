@@ -3,6 +3,7 @@ package com.example.me.gofood1.Controller;
 import com.example.me.gofood1.Model.FoodCard;
 import com.example.me.gofood1.Service.IFoodCardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,12 +13,11 @@ import java.util.List;
 @RequestMapping("/api")
 public class FoodCardController {
 
-    @Autowired
+
     private IFoodCardService foodCardService;
 
     @PostMapping("/foodcards")
     public FoodCard saveProduct(@RequestBody FoodCard foodCard) {
-
         FoodCard savedfoodCard = foodCardService.addFoodCard(foodCard);
         return savedfoodCard;
     }
@@ -29,17 +29,18 @@ public class FoodCardController {
     }
 
     @GetMapping("/foodcards/{id}")
-    public FoodCard getFoodCard(@PathVariable Integer id) {
+    public FoodCard getProductById(@PathVariable Integer id) {
 
         FoodCard foodCard = foodCardService.getFoodCardById(id);
         return foodCard;
     }
 
     @DeleteMapping("/foodcards/{id}")
-    public String deleteFoodCard(Integer id) {
+    public String deleteProduct(Integer id) {
         if(foodCardService.deleteFoodCard(id)) {
             return "Food Card deleted successfully";
         }
         return "Food Card is not found to delete";
     }
+
 }

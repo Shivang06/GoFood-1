@@ -12,13 +12,13 @@ public class FoodCardRepositoryImpl implements IFoodCardRepository{
     static List<FoodCard> foodCardList = new ArrayList<>();
 
     @Override
-    public FoodCard addFoodCard(FoodCard foodCard){
+    public FoodCard addFoodCardR(FoodCard foodCard){
         foodCardList.add(foodCard);;
         return foodCard;
     }
 
     @Override
-    public FoodCard getFoodCard(int id) {
+    public FoodCard getFoodCardR(int id) {
         for(FoodCard product : foodCardList){
             if(product.getId() == id){
                 return product;
@@ -28,12 +28,12 @@ public class FoodCardRepositoryImpl implements IFoodCardRepository{
     }
 
     @Override
-    public List<FoodCard> getfoodCardList() {
+    public List<FoodCard> getfoodCardListR() {
         return foodCardList;
     }
 
     @Override
-    public boolean deleteFoodCard(int id) {
+    public boolean deleteFoodCardR(int id) {
         for(FoodCard product : foodCardList){
             if(product.getId() == id){
                 foodCardList.remove(product);
