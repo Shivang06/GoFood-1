@@ -4,6 +4,9 @@ import com.example.me.gofood1.Model.FoodCard;
 import com.example.me.gofood1.Service.IFoodCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,30 +20,40 @@ public class FoodCardController {
     private IFoodCardService foodCardService;
 
     @PostMapping("/foodcards")
-    public FoodCard saveProduct(@RequestBody FoodCard foodCard) {
+    public ResponseEntity<FoodCard> saveProduct(@RequestBody FoodCard foodCard) {
         FoodCard savedfoodCard = foodCardService.addFoodCard(foodCard);
-        return savedfoodCard;
+        if(savedfoodCard != null) {
+            return ResponseEntity.ok(savedfoodCard);
+        }
+        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/foodcards")
-    public List<FoodCard> getAllProducts() {
-         List<FoodCard> foodCardList = foodCardService.getAllFoodCards();
-        return foodCardList;
+    public ResponseEntity<List<FoodCard>> getAllProducts() {
+        List<FoodCard> foodCardList = foodCardService.getAllFoodCards();
+        if(foodCardList.size()>0) {
+            return ResponseEntity.ok(foodCardList);
+        }
+        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/foodcards/{id}")
-    public FoodCard getProductById(@PathVariable Integer id) {
 
+    @GetMapping("/foodcards/{id}")
+    public ResponseEntity<FoodCard> getProductById(@PathVariable("id") Integer id) {
         FoodCard foodCard = foodCardService.getFoodCardById(id);
-        return foodCard;
+        if(foodCard!=null) {
+            return ResponseEntity.ok(foodCard);
+        }
+        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/foodcards/{id}")
-    public String deleteProduct(Integer id) {
-        if(foodCardService.deleteFoodCard(id)) {
-            return "Food Card deleted successfully";
+    public ResponseEntity<String> deleteProductById(@PathVariable("id") Integer id) {
+        boolean isDeleted = foodCardService.deleteFoodCard(id);
+        if (isDeleted) {
+            return ResponseEntity.ok("Food card deleted successfully.");
         }
-        return "Food Card is not found to delete";
+        return new ResponseEntity<>("Food card not found.", HttpStatus.NOT_FOUND);
     }
 
 }

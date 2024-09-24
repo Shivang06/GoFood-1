@@ -13,6 +13,8 @@ public class FoodCardServiceImpl implements IFoodCardService {
     static{
         foodCardList = new ArrayList<>();
         foodCardList.add(new FoodCard(1001,"Chicken Biryani",250.00,new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)),new ArrayList<>(Arrays.asList("HAlF","FULL"))));
+        foodCardList.add(new FoodCard(1002,"Veg Biryani",200.00,new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6)),new ArrayList<>(Arrays.asList("HAlF","FULL"))));
+
     }
     @Override
     public FoodCard addFoodCard(FoodCard foodCard) {
