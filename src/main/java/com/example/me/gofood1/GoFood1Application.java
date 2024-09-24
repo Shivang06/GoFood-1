@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GoFood1Application {
 
     public static void main(String[] args) {
+
         SpringApplication.run(GoFood1Application.class, args);
     }
 
