@@ -1,9 +1,11 @@
 package com.example.me.gofood1.Repository;
 
 import com.example.me.gofood1.Model.FoodCard;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class FoodCardRepositoryImpl implements IFoodCardRepository{
 

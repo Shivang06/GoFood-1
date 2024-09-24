@@ -1,11 +1,12 @@
 package com.example.me.gofood1.Service;
 
 import com.example.me.gofood1.Model.FoodCard;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+@Service
 public class FoodCardServiceImpl implements IFoodCardService {
     private static List<FoodCard> foodCardList;
     static{
