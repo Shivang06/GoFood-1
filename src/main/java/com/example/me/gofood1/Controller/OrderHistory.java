@@ -9,20 +9,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class OrderHistory implements IOrderHistoryService {
+public class OrderHistory  {
 
 
-    @Qualifier("orderHistoryServiceImpl")
+
     @Autowired
     private IOrderHistoryService orderHistoryService;
 
-    @Override
+
     @GetMapping("/history")
     public List<com.example.me.gofood1.Model.OrderHistory> getAllHistory() {
         return orderHistoryService.getAllHistory();
     }
 
-    @Override
+
     @PostMapping("/add-History")
     public com.example.me.gofood1.Model.OrderHistory addOrderHistory(@RequestBody com.example.me.gofood1.Model.OrderHistory orderHistory) {
         return orderHistoryService.addOrderHistory(orderHistory);
