@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class FoodCardController {
 
-    @Qualifier("FoodCardServiceImpl")
+
     @Autowired
     private IFoodCardService foodCardService;
 

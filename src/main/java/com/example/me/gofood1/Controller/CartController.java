@@ -10,27 +10,26 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class CartController implements ICartService {
+public class CartController  {
 
-//    @Qualifier("IC")
-@Qualifier("ICartServiceImpl")
+
 @Autowired
     private ICartService cartService;
 
 
-    @Override
+
     @GetMapping("/cart")
     public List<Cart> getCart() {
         return cartService.getCart();
     }
 
-    @Override
+
     @PostMapping("/add")
     public void addCart(@RequestBody Cart cart) {
         cartService.addCart(cart);
     }
 
-    @Override
+
     @DeleteMapping("/delete")
     public boolean deleteFoodItem(@RequestBody Cart cart) {
        if(cartService.deleteFoodItem(cart)){
@@ -39,14 +38,14 @@ public class CartController implements ICartService {
        return false;
     }
 
-    @Override
+
     @PutMapping("/increase")
     public void increaseQuantity(@RequestBody Cart cart) {
 
         cartService.increaseQuantity(cart);
     }
 
-    @Override
+
     @GetMapping("/decrease")
     public void decreaseQuantity(@RequestBody Cart cart) {
 

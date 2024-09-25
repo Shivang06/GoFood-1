@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ICartServiceImpl implements ICartService {
+public class CartServiceImpl implements ICartService {
 
     static List<Cart> Carts = new ArrayList<>();
     static {
