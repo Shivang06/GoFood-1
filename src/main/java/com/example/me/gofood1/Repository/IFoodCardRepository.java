@@ -8,6 +8,6 @@ public interface IFoodCardRepository {
 
     public FoodCard addFoodCard(FoodCard foodCard);
     public FoodCard getFoodCard(int id);
-    public List<FoodCard> getfoodCardList();
-    public boolean deleteFoodCard(int id);
+    public List<FoodCard> getfoodCardList();//Get food Card
+    public boolean deleteFoodCard(int id);//Delete FoodCard
 }
