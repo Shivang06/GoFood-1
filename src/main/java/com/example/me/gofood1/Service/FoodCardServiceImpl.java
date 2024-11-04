@@ -10,22 +10,27 @@ import com.example.me.gofood1.Model.FoodCard;
 @Service("FoodCardServiceImpl")
 public class FoodCardServiceImpl implements IFoodCardService {
     private static List<FoodCard> foodCardList;
-    static{
-        foodCardList = new ArrayList<>();
-        foodCardList.add(new FoodCard(1001,"Chicken Biryani",250.00,1,"HALF"));
-        foodCardList.add(new FoodCard(1002,"Veg Biryani",200.00,3,"FULL"));
+    private static int currentId = 1002; // Start with the last used ID
 
+    static {
+        foodCardList = new ArrayList<>();
+        foodCardList.add(new FoodCard(1001, "Chicken Biryani", 250.00, 1, "HALF"));
+        foodCardList.add(new FoodCard(1002, "Veg Biryani", 200.00, 3, "FULL"));
     }
+
     @Override
     public FoodCard addFoodCard(FoodCard foodCard) {
+        // Increment ID and assign to the new food card
+        currentId++;
+        foodCard.setId(currentId);
         foodCardList.add(foodCard);
         return foodCard;
     }
 
     @Override
     public FoodCard getFoodCardById(int id) {
-        for(FoodCard foodCard : foodCardList){
-            if(foodCard.getId()==id){
+        for (FoodCard foodCard : foodCardList) {
+            if (foodCard.getId() == id) {
                 return foodCard;
             }
         }
@@ -39,23 +44,24 @@ public class FoodCardServiceImpl implements IFoodCardService {
 
     @Override
     public boolean deleteFoodCard(int id) {
-        if(getFoodCardById(id)==null){
+        FoodCard foodCard = getFoodCardById(id);
+        if (foodCard == null) {
             return false;
         }
-        foodCardList.remove(getFoodCardById(id));
+        foodCardList.remove(foodCard);
         return true;
     }
 
     @Override
     public FoodCard updateFoodCard(int id, FoodCard foodCard) {
-        for (FoodCard foodCard1 : foodCardList) {
-            if (foodCard1.getId()==id) {
+        for (FoodCard existingFoodCard : foodCardList) {
+            if (existingFoodCard.getId() == id) {
                 // Update the fields
-                foodCard1.setName(foodCard.getName());
-                foodCard1.setPrice(foodCard.getPrice());
-                foodCard1.setQuantity(foodCard.getQuantity());
-                foodCard1.setCategory(foodCard.getCategory());
-                return foodCard1;
+                existingFoodCard.setName(foodCard.getName());
+                existingFoodCard.setPrice(foodCard.getPrice());
+                existingFoodCard.setQuantity(foodCard.getQuantity());
+                existingFoodCard.setCategory(foodCard.getCategory());
+                return existingFoodCard;
             }
         }
         throw new RuntimeException("FoodCard not found with ID: " + id);
