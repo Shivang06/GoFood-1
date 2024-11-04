@@ -5,56 +5,47 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CartServiceImpl implements ICartService {
 
-    static List<Cart> Carts = new ArrayList<>();
+    private static List<Cart> carts = new ArrayList<>();
+
     static {
-
-        Carts.add(new Cart("Chicken Biryani", 2, 200.90,"HALF"));
-        Carts.add(new Cart("Veg Biryani", 1, 90.80,"FULL"));
+        // Add sample items
+        carts.add(new Cart("Chicken Biryani", 2, 200.90, "HALF"));
+        carts.add(new Cart("Veg Biryani", 1, 90.80, "FULL"));
     }
-
 
     @Override
     public List<Cart> getCart() {
-        return Carts;
+        return carts;
     }
 
     @Override
     public boolean deleteFoodItem(Cart cart) {
-        if (Carts.contains(cart)) {
-            Carts.remove(cart);
-            return true;
-        }
-        return false;
+        return carts.removeIf(c -> c.getId().equals(cart.getId()));
     }
 
     @Override
     public void increaseQuantity(Cart cart) {
-
-        for(Cart cart1 : Carts) {
-            if(cart1.equals(cart)) {
-                cart1.setQuantity(cart1.getQuantity() + 1);
-            }
-        }
+        findCartById(cart.getId()).ifPresent(c -> c.setQuantity(c.getQuantity() + 1));
     }
 
     @Override
     public void decreaseQuantity(Cart cart) {
-
-        for(Cart cart1 : Carts) {
-            if(cart1.equals(cart)) {
-                cart1.setQuantity(cart1.getQuantity() - 1);
-            }
-        }
+        findCartById(cart.getId()).ifPresent(c -> c.setQuantity(Math.max(c.getQuantity() - 1, 0)));
     }
 
     @Override
     public void addCart(Cart cart) {
-        Carts.add(cart);
+        cart.setId(UUID.randomUUID().toString()); // Generate a unique ID for the new cart item
+        carts.add(cart);
     }
 
-
+    private Optional<Cart> findCartById(String id) {
+        return carts.stream().filter(c -> c.getId().equals(id)).findFirst();
+    }
 }

@@ -56,7 +56,6 @@ public class FoodCardServiceImpl implements IFoodCardService {
     public FoodCard updateFoodCard(int id, FoodCard foodCard) {
         for (FoodCard existingFoodCard : foodCardList) {
             if (existingFoodCard.getId() == id) {
-                // Update the fields
                 existingFoodCard.setName(foodCard.getName());
                 existingFoodCard.setPrice(foodCard.getPrice());
                 existingFoodCard.setQuantity(foodCard.getQuantity());
