@@ -24,5 +24,6 @@ public class FoodCard {
     private String name;
     private double price;
     private int quantity;
+    private String description;
     private String category;
 }
