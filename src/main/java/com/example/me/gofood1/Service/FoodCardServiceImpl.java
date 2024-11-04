@@ -14,8 +14,8 @@ public class FoodCardServiceImpl implements IFoodCardService {
 
     static {
         foodCardList = new ArrayList<>();
-        foodCardList.add(new FoodCard(1001, "Chicken Biryani", 250.00, 1, "HALF"));
-        foodCardList.add(new FoodCard(1002, "Veg Biryani", 200.00, 3, "FULL"));
+        foodCardList.add(new FoodCard(1, "Veg Biryani", 250.00, 2, "Aromatic rice dish with mixed vegetables and spices." ,"Half"));
+        foodCardList.add(new FoodCard(2, "Pizza", 200.00, 3, "Flatbread topped with sauce, cheese, and toppings.", "Full"));
     }
 
     @Override
