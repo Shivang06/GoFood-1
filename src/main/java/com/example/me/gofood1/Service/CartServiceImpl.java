@@ -15,8 +15,8 @@ public class CartServiceImpl implements ICartService {
 
     static {
         // Add sample items
-        carts.add(new Cart("Chicken Biryani", 2, 200.90, "HALF"));
-        carts.add(new Cart("Veg Biryani", 1, 90.80, "FULL"));
+        // carts.add(new Cart("Chicken Biryani", 200.90, 3, "Best Biryani", "Half"));
+        // carts.add(new Cart("Veg Biryani", 190.80, 3, "Best Veg Biryani", "Full"));
     }
 
     @Override

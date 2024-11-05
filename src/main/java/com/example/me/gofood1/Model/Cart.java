@@ -12,16 +12,18 @@ public class Cart {
 
     private String id; // Unique identifier for each cart item
     private String foodName;
-    private int quantity;
     private double price;
-    private String option;
+    private int quantity;
+    private String description;
+    private String category;
 
     // Constructor to generate an ID automatically when creating a new Cart item
-    public Cart(String foodName, int quantity, double price, String option) {
+    public Cart(String foodName, double price, int quantity, String description, String category) {
         this.id = UUID.randomUUID().toString();
         this.foodName = foodName;
-        this.quantity = quantity;
         this.price = price;
-        this.option = option;
+        this.quantity = quantity;
+        this.description = description;
+        this.category = category;
     }
 }
