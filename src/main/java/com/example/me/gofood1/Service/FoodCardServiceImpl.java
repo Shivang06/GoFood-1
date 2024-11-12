@@ -60,6 +60,7 @@ public class FoodCardServiceImpl implements IFoodCardService {
                 existingFoodCard.setPrice(foodCard.getPrice());
                 existingFoodCard.setQuantity(foodCard.getQuantity());
                 existingFoodCard.setCategory(foodCard.getCategory());
+                existingFoodCard.setDescription(foodCard.getDescription());
                 return existingFoodCard;
             }
         }

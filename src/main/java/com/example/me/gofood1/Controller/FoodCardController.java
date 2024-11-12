@@ -12,7 +12,7 @@ import com.example.me.gofood1.Service.IFoodCardService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:5173")
 public class FoodCardController {
 
 
