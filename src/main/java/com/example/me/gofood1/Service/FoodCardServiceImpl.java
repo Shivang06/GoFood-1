@@ -16,6 +16,15 @@ public class FoodCardServiceImpl implements IFoodCardService {
         foodCardList = new ArrayList<>();
         foodCardList.add(new FoodCard(1, "Veg Biryani", 250.00, 2, "Aromatic rice dish with mixed vegetables and spices." ,"Half"));
         foodCardList.add(new FoodCard(2, "Pizza", 200.00, 3, "Flatbread topped with sauce, cheese, and toppings.", "Full"));
+        foodCardList.add(new FoodCard(3, "Paneer Butter Masala", 180.00, 4, "Creamy, spiced curry made with paneer cubes.", "Half"));
+        foodCardList.add(new FoodCard(4, "Chicken Tikka Masala", 300.00, 5, "Grilled chicken in a rich, creamy tomato sauce.", "Full"));
+        foodCardList.add(new FoodCard(5, "Chole Bhature", 150.00, 4, "Spicy chickpea curry served with deep-fried bread.", "Full"));
+        foodCardList.add(new FoodCard(6, "Masala Dosa", 120.00, 3, "Crispy rice crepe filled with spiced potato mix.", "Full"));
+        foodCardList.add(new FoodCard(7, "Pav Bhaji", 100.00, 3, "Mixed vegetable curry served with buttered rolls.", "Full"));
+        foodCardList.add(new FoodCard(8, "Butter Naan", 40.00, 2, "Soft flatbread with a buttery finish, perfect with curries.", "Full"));
+        foodCardList.add(new FoodCard(9, "Samosa", 20.00, 1, "Deep-fried pastry with a spicy potato filling.", "Full"));
+        foodCardList.add(new FoodCard(10, "Gulab Jamun", 50.00, 2, "Sweet fried dough balls soaked in sugar syrup.", "Full"));
+
     }
 
     @Override
