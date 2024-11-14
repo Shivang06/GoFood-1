@@ -2,6 +2,10 @@ package com.example.me.gofood1.Controller;
 
 import com.example.me.gofood1.Entity.User;
 import com.example.me.gofood1.Service.UserService;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -38,11 +42,18 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody User user) {
+    public ResponseEntity<String> login(@RequestBody User user) {
         if (userService.findByUsername(user.getUsername()) != null) {
 
             return ResponseEntity.ok().body("Login successful");
         }
         return ResponseEntity.badRequest().body("Invalid username or password");
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response) {
+        // Invalidate session or clear authentication
+        request.getSession().invalidate();
+        return ResponseEntity.ok().build();
     }
 }

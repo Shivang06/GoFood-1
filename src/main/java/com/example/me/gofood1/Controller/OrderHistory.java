@@ -2,7 +2,6 @@ package com.example.me.gofood1.Controller;
 
 import com.example.me.gofood1.Service.IOrderHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
